@@ -1,0 +1,20 @@
+{
+  "name": "pract",
+  "version": "1.0.0",
+  "description": "note taking app cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "sharfan",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.6.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
