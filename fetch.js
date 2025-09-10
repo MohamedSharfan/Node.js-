@@ -4,12 +4,12 @@ const { response } = require("express");
 
 axios.get("https://jsonplaceholder.typicode.com/posts/1")
     .then(response =>{
-        console.log("Promise:",response.data);
+        console.log("promise:",response.data);
     })
     .catch(error =>{
-        console.error("Error:", error);   
-    });
-
+        console.error("Error:",error);
+        
+    })
 
 //fetch api using async
 
