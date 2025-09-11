@@ -18,7 +18,7 @@ app.get('/students',(req,res)=>{
 })
 
 app.get('/students/:id',(req,res)=>{
-    const student = students.find(s => s.id === parseInt(req.params.id));
+    const student = students.find(s => s.id == parseInt(req.params.id));
     if (student){
         res.json(student);
     }
@@ -41,6 +41,20 @@ app.post('/students',(req,res)=>{
               <a href="/form.html">Add another user</a>  
             `);
 });
+
+app.put('/students/:id',(req,res)=>{
+    const student = students.find(s => s.id === parseInt(req.params.id));
+    if(student){
+        student.name = req.body.name || student.name;
+        student.grade = req.body.grade || student.grade;
+        res.json(student);
+    }
+    else{
+        res.status(404).json({message:"student not found"});
+    }
+});
+
+
 
 app.listen(PORT,()=>{
     console.log(`app is running on http://localhost:${PORT}`);
