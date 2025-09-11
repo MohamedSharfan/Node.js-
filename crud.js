@@ -54,6 +54,17 @@ app.put('/students/:id',(req,res)=>{
     }
 });
 
+app.delete('/students/:id',(req,res)=>{
+    const index = students.findIndex(s => s.id === parseInt(req.params.id));
+    if(index !== -1){
+        const deleteStudent = students.splice(index,1);
+        res.json(deleteStudent[0]);
+    }
+    else{
+        res.status(404).json({message:"user is not found"})
+    }
+})
+
 
 
 app.listen(PORT,()=>{
