@@ -3,6 +3,8 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
 
 let students = [
     {id:1, name:"sharfan", grade:12},
@@ -13,8 +15,7 @@ let students = [
 
 app.get('/students',(req,res)=>{
     res.json(students);
-});
-
+})
 
 app.get('/students/:id',(req,res)=>{
     const student = students.find(s => s.id === parseInt(req.params.id));
@@ -24,4 +25,23 @@ app.get('/students/:id',(req,res)=>{
     else{
         res.status(404).json({message:"student not found"});
     }
+})
+
+app.post('/students',(req,res)=>{
+    const newStudent = 
+        {id: students.length+1,
+        name: req.body.name,
+        grade: req.body.grade
+        };
+    students.push(newStudent);
+    res.send(`<h2>Successfully added new student</h2>
+              <p>name : ${newStudent.name}</p>  
+              <p>grade : ${newStudent.grade}</p>  
+              <p>id : ${newStudent.id}</p>
+              <a href="/form.html">Add another user</a>  
+            `);
+});
+
+app.listen(PORT,()=>{
+    console.log(`app is running on http://localhost:${PORT}`);
 })
