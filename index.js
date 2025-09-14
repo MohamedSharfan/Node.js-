@@ -105,33 +105,18 @@
 //     }
 // }
 
+
+
 const mongoose = require('mongoose');
 
-const MONGO_URI = 'mongodb://localhost:27017/my';
+const MONGO_URI = 'mongodb://localhost:27017/usersDB';
 
-mongoose.connect(MONGO_URI,{useNewUrlParser:true, useUnifiedTopology:true})
-    .then(()=> console.log("Successfully connected"))
-    .catch(err => console.log('error:', err));
+mongoose.connect(MONGO_URI,{ useNewUrlParser:true, useUnifiedTopology:true })
+    .then(()=>{console.log('successfully connected')})
+    .catch(err=>console.log('Error:',err));
 
-const User = require('./userSchema');
 
-async function createUser(){
-    try{
-        const user = new User({
-            name: "Arkam",
-            email:"arkam@gmail.com"
-        });
-    await user.save();
-    console.log("successfully added user:",user);
-    }
-    catch(err){
-        console.error('Error: ',err);
-    }
-    
-}
-
-createUser();
-
+module.exports = mongoose;
 
 
 
