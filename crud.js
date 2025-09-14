@@ -61,7 +61,7 @@ app.delete('/students/:id',(req,res)=>{
         res.json(deleteStudent[0]);
     }
     else{
-        res.status(404).json({message:"user is not found"})
+        res.status(404).json({message:"user is not found"});
     }
 })
 

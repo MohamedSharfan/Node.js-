@@ -49,46 +49,6 @@
 // }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // const { log } = require('console');
 // const fs = require('fs');
 // const { title } = require('process');
@@ -144,3 +104,78 @@
 //         console.log("The item is not there");
 //     }
 // }
+
+const mongoose = require('mongoose');
+
+const MONGO_URI = 'mongodb://localhost:27017/my';
+
+mongoose.connect(MONGO_URI,{useNewUrlParser:true, useUnifiedTopology:true})
+    .then(()=> console.log("Successfully connected"))
+    .catch(err => console.log('error:', err));
+
+const User = require('./userSchema');
+
+async function createUser(){
+    try{
+        const user = new User({
+            name: "Arkam",
+            email:"arkam@gmail.com"
+        });
+    await user.save();
+    console.log("successfully added user:",user);
+    }
+    catch(err){
+        console.error('Error: ',err);
+    }
+    
+}
+
+createUser();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const mongoose = require('mongoose');
+
+// const MONGO_URI = 'mongodb://localhost:27017/mydatabase';
+
+// mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(()=> console.log('Connected to MongoDB'))
+//     .catch((err)=> console.error('Error Connecting:', err));
+
+// const User = require('./userSchema');
+
+// async function createUser(){
+//     try{
+//         const user = new User({
+//             name: "sharfan",
+//             email: "sharfan@gmail.com"
+//         });
+//         await user.save();
+//         console.log("succesfully created user:", user);
+//     }
+//     catch(err){
+//         console.log("Error saving user:", error.messege);
+//     }
+// }
+
+// createUser();
